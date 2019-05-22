@@ -1,6 +1,7 @@
 from map_objects.tile import Tile
 from map_objects.rectangle import Rect
 from random import randint
+from math import fabs
 
 class GameMap:
     def __init__(self, width, height):
@@ -32,6 +33,9 @@ class GameMap:
             # run through the other rooms and see if they intersect with this one
             for other_room in rooms:
                 if new_room.intersect(other_room):
+                    break
+
+                elif fabs(new_room.x2 - new_room.x1) <= 2 and fabs(new_room.y2 - new_room.y1) <= 2:
                     break
     
                 else:
